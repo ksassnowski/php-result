@@ -1,5 +1,5 @@
 {
-    "name": "sassnowski/php-result",
+    "name": "sassnowski/php-result-type",
     "type": "library",
     "require-dev": {
         "phpunit/phpunit": "^6.0"
