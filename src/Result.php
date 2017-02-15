@@ -52,12 +52,12 @@ abstract class Result
     /**
      * @return bool
      */
-    public abstract function isSuccess(): bool;
+    abstract public function isSuccess(): bool;
 
     /**
      * @return bool
      */
-    public abstract function isFailure(): bool;
+    abstract public function isFailure(): bool;
 
     /**
      * @param callable $f
@@ -71,6 +71,20 @@ abstract class Result
         }
 
         return $f($this->value);
+    }
+
+    /**
+     * @param callable $f
+     *
+     * @return Result
+     */
+    public function map(callable $f): Result
+    {
+        if ($this->isFailure()) {
+            return $this;
+        }
+
+        return self::success($f($this->value));
     }
 
     /**
